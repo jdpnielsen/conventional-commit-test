@@ -1,0 +1,31 @@
+{
+  "name": "conventional-commit-test",
+  "version": "1.0.0",
+  "scripts": {
+    "commit": "git-cz",
+    "commit:retry": "git-cz --retry",
+    "commitlint": "commitlint --from HEAD~1 --to HEAD --verbose -g configs/commitlint.config.js",
+    "release": "standard-version"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./configs/commitizen.config.js"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -g configs/commitlint.config.js -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "commitizen": "^4.0.3",
+    "cz-customizable": "^6.2.0",
+    "husky": "^4.2.3",
+    "standard-version": "^7.1.0"
+  }
+}
